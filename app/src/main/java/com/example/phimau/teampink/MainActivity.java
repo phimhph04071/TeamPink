@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         invoice.addProduct(invoiceDetail2);
 
         Ion.with(getBaseContext())
-                .load("http://hungntph04073.esy.es/inf205/push-invoice.php")
+                .load(ApiContent.URL_INVOICE)
                 .setBodyParameter("json",invoice.maketStringJson())
                 .asString()
                 .setCallback(new FutureCallback<String>() {
