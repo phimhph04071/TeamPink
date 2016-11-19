@@ -27,17 +27,17 @@ public class MainActivity extends AppCompatActivity {
         invoice.addProduct(invoiceDetail);
         invoice.addProduct(invoiceDetail1);
         invoice.addProduct(invoiceDetail2);
-
-        Ion.with(getBaseContext())
-                .load(ApiContent.URL_INVOICE)
-                .setBodyParameter("json",invoice.maketStringJson())
-                .asString()
-                .setCallback(new FutureCallback<String>() {
-                    @Override
-                    public void onCompleted(Exception e, String result) {
-                        Log.e("TESTPHP",result);
-                        Toast.makeText(getBaseContext(),result,Toast.LENGTH_SHORT).show();
-                    }
-                });
+//
+//        Ion.with(getBaseContext())
+//                .load(ApiContent.URL_INVOICE)
+//                .setBodyParameter("json",invoice.maketStringJson())
+//                .asString()
+//                .setCallback(new FutureCallback<String>() {
+//                    @Override
+//                    public void onCompleted(Exception e, String result) {
+//                        Log.e("TESTPHP",result);
+//                        Toast.makeText(getBaseContext(),result,Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 }

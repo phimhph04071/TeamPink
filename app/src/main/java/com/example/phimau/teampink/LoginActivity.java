@@ -46,11 +46,11 @@ public class LoginActivity extends AppCompatActivity {
                                 try {
 
                                     JSONObject json = new JSONObject(result);
-                                    if (json.getInt("suscess")==1){
+                                    if (json.getInt("success")==1){
                                         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                         startActivity(intent);
                                         finish();
-                                    } else if (json.getInt("suscess")==2){
+                                    } else if (json.getInt("success")==2){
                                         Toast.makeText(getBaseContext(),"Sai tài khoản hoặc mật khẩu",Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (JSONException e1) {
