@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <AutoCompleteTextView
+        android:id="@+id/etIdPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Id sản phẩm"
+        android:maxLines="1"
+        android:padding="16dp" />
+</LinearLayout>

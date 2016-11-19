@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ECEFF1"
         android:gravity="center"
         android:padding="5dp">
 
         <TextView
             android:id="@+id/tvIdPro"
-            android:layout_width="25dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="0.5"
             android:gravity="center"
-            android:text="dsdsdsd" />
+            android:hint="ID SP" />
 
         <TextView
             android:id="@+id/tvNamePro"
-            android:layout_width="90dp"
+            android:layout_width="100dp"
             android:padding="8dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -37,17 +36,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2">
-
-            <TextView
-                android:id="@+id/tvCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:text="1" />
+            android:layout_weight="0.5">
 
             <LinearLayout
+                android:id="@+id/linlia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -60,6 +52,7 @@
                     android:id="@+id/btnUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:src="@drawable/ic_uppp" />
 
                 <ImageView
@@ -70,6 +63,15 @@
 
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:text="1"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/linlia"
+                android:layout_toStartOf="@+id/linlia" />
 
         </RelativeLayout>
     </TableRow>
