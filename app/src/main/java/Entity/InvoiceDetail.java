@@ -5,10 +5,10 @@ package Entity;
  */
 
 public class InvoiceDetail  {
-    private String 	product_id;
+    private Product 	product_id;
     private int number;
 
-    public InvoiceDetail(int number, String product_id) {
+    public InvoiceDetail(int number, Product product_id) {
         this.number = number;
         this.product_id = product_id;
     }
@@ -21,11 +21,11 @@ public class InvoiceDetail  {
         this.number = number;
     }
 
-    public String getProduct_id() {
+    public Product getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(String product_id) {
+    public void setProduct_id(Product product_id) {
         this.product_id = product_id;
     }
 }

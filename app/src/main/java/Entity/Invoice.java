@@ -82,7 +82,7 @@ public class Invoice {
     String pasreToString(){
         String result="\"listProducts\":[";
         for (int i=0;i<listProduct.size();i++){
-            result+="{\"product_id\":\""+listProduct.get(i).getProduct_id()+"\",\"number\":\""+listProduct.get(i).getNumber()+"\"}";
+            result+="{\"product_id\":\""+listProduct.get(i).getProduct_id().getId()+"\",\"number\":\""+listProduct.get(i).getNumber()+"\"}";
             if (i!=listProduct.size()-1){
                 result+=",";
             }
