@@ -2,6 +2,7 @@ package com.example.phimau.teampink;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +17,14 @@ import com.koushikdutta.ion.Ion;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Entity.Employee;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText etId;
     private EditText etPassword;
     private Button btnLogin;
     private ProgressDialog dialog;
+    private PreferenceAccount preferenceAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                     JSONObject json = new JSONObject(result);
                                     if (json.getInt("success")==1){
+                                        JSONObject employee = json.getJSONObject("account");
+                                        Employee employee1 =new Employee(employee.getString("id"),employee.getString("name"),employee.getString("password"));
+                                        preferenceAccount.setLogin(employee1);
                                         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                         startActivity(intent);
                                         finish();
@@ -67,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         etId = (EditText) findViewById(R.id.etId);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        preferenceAccount = new PreferenceAccount(getBaseContext());
         dialog = new ProgressDialog(LoginActivity.this);
         dialog.setMessage("Loadding");
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

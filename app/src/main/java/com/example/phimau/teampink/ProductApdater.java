@@ -1,7 +1,12 @@
 package com.example.phimau.teampink;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,24 +35,26 @@ import Entity.Product;
  * Created by phimau on 11/19/2016.
  */
 
-public class ProductApdater extends ArrayAdapter<InvoiceDetail> {
+public class ProductApdater extends ArrayAdapter<InvoiceDetail>  {
     ArrayAdapter arrayAdapter;
     Context mContext ;
     ArrayList<InvoiceDetail> mlList;
     ArrayList<String> listProdcut;
-    public ProductApdater(Context context, int resource, ArrayList<InvoiceDetail> objects) {
+    Activity mActivity;
+    public ProductApdater(Context context, int resource, ArrayList<InvoiceDetail> objects,Activity activity) {
         super(context, resource, objects);
         mContext = context;
         mlList= objects;
         listProdcut  = new ArrayList<>();
         arrayAdapter = new ArrayAdapter(mContext,android.R.layout.simple_list_item_1,listProdcut);
+        mActivity=activity;
 
 
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(R.layout.item_product,null);
@@ -62,11 +69,38 @@ public class ProductApdater extends ArrayAdapter<InvoiceDetail> {
 
         btnDown.setClickable(true);
         btnUp.setClickable(true);
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+                builder.setTitle("Xóa ?");
+                builder.setMessage("Bạn có muốn Bỏ sản phẩm "+product.getProduct_id().getId());
+                builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mlList.remove(position);
+                        notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return false;
+
+        }
+        });
 
         tvId.setText(product.getProduct_id().getId());
         tvName.setText(product.getProduct_id().getName());
-        tvPrice.setText(product.getProduct_id().getPrice()+"");
+        tvPrice.setText(product.getProduct_id().getPrice()+"đ");
         tvCount.setText(1+"");
+        int num = Integer.parseInt(tvCount.getText().toString());
+        product.setNumber(num);
         btnDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +123,16 @@ public class ProductApdater extends ArrayAdapter<InvoiceDetail> {
             }
         });
         return convertView;
+    }
 
+    @Override
+    public int getCount() {
+        return mlList.size();
+    }
+
+    @Nullable
+    @Override
+    public InvoiceDetail getItem(int position) {
+        return mlList.get(position);
     }
 }

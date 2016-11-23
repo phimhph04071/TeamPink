@@ -21,7 +21,7 @@ public class Invoice {
     private  String employeeID;
     private ArrayList<InvoiceDetail> listProduct;
 
-    public Invoice(String customerID, long date, String employeeID) {
+    public Invoice(String customerID, String employeeID) {
         this.customerID = customerID;
         this.date = getTimeinMilisecon();
         this.employeeID = employeeID;

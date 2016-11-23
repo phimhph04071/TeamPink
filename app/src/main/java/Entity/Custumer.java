@@ -48,4 +48,5 @@ public class Custumer {
     public void setNumPhone(String numPhone) {
         this.numPhone = numPhone;
     }
+
 }

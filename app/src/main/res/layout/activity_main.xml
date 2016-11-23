@@ -7,14 +7,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.example.phimau.teampink.MainActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.phimau.teampink.MainActivity"
+    tools:showIn="@layout/main">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_add_product" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,12 +31,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
+                <EditText
                     android:id="@+id/atvNumphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Sdt Khách Hàng"
                     android:paddingBottom="16dp"
+                    android:drawableRight="@android:drawable/ic_menu_search"
                     android:paddingTop="8dp"
                     android:textSize="24sp" />
 
