@@ -224,8 +224,7 @@ public class MainActivity extends AppCompatActivity {
                     .setCallback(new FutureCallback<String>() {
                         @Override
                         public void onCompleted(Exception e, String result) {
-                            Toast.makeText(getBaseContext(), result, Toast.LENGTH_SHORT).show();
-                            Log.e("REEE", result);
+
                             loadDialog.dismiss();
                             clearfield();
                         }
@@ -237,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         etName.setText("");
         etNumphone.setText("");
         etAdress.setText("");
+        productApdater.clear();
     }
 
     private boolean checkvadiate() {
@@ -253,6 +253,10 @@ public class MainActivity extends AppCompatActivity {
         if (etAdress.getText().toString().trim().equals("")) {
             Toast.makeText(getBaseContext(), "Nhập đủ trường", Toast.LENGTH_SHORT).show();
             etAdress.requestFocus();
+            return false;
+        }
+        if (productApdater.getCount()==0){
+            Toast.makeText(getBaseContext(), "Chưa có sản phẩm nào", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

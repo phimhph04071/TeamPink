@@ -35,19 +35,20 @@ import Entity.Product;
  * Created by phimau on 11/19/2016.
  */
 
-public class ProductApdater extends ArrayAdapter<InvoiceDetail>  {
-    ArrayAdapter arrayAdapter;
-    Context mContext ;
-    ArrayList<InvoiceDetail> mlList;
-    ArrayList<String> listProdcut;
-    Activity mActivity;
-    public ProductApdater(Context context, int resource, ArrayList<InvoiceDetail> objects,Activity activity) {
+public class ProductApdater extends ArrayAdapter<InvoiceDetail> {
+    private ArrayAdapter arrayAdapter;
+    private Context mContext;
+    private ArrayList<InvoiceDetail> mlList;
+    private ArrayList<String> listProdcut;
+    private Activity mActivity;
+
+    public ProductApdater(Context context, int resource, ArrayList<InvoiceDetail> objects, Activity activity) {
         super(context, resource, objects);
         mContext = context;
-        mlList= objects;
-        listProdcut  = new ArrayList<>();
-        arrayAdapter = new ArrayAdapter(mContext,android.R.layout.simple_list_item_1,listProdcut);
-        mActivity=activity;
+        mlList = objects;
+        listProdcut = new ArrayList<>();
+        arrayAdapter = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, listProdcut);
+        mActivity = activity;
 
 
     }
@@ -57,13 +58,13 @@ public class ProductApdater extends ArrayAdapter<InvoiceDetail>  {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView = inflater.inflate(R.layout.item_product,null);
+        convertView = inflater.inflate(R.layout.item_product, null);
 
         final InvoiceDetail product = getItem(position);
         TextView tvId = (TextView) convertView.findViewById(R.id.tvIdPro);
-        TextView  tvName = (TextView) convertView.findViewById(R.id.tvNamePro);
-        TextView  tvPrice = (TextView) convertView.findViewById(R.id.tvPrice);
-        final TextView  tvCount = (TextView) convertView.findViewById(R.id.tvCount);
+        TextView tvName = (TextView) convertView.findViewById(R.id.tvNamePro);
+        TextView tvPrice = (TextView) convertView.findViewById(R.id.tvPrice);
+        final TextView tvCount = (TextView) convertView.findViewById(R.id.tvCount);
         ImageView btnUp = (ImageView) convertView.findViewById(R.id.btnUp);
         ImageView btnDown = (ImageView) convertView.findViewById(R.id.btnDown);
 
@@ -74,7 +75,7 @@ public class ProductApdater extends ArrayAdapter<InvoiceDetail>  {
             public boolean onLongClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
                 builder.setTitle("Xóa ?");
-                builder.setMessage("Bạn có muốn Bỏ sản phẩm "+product.getProduct_id().getId());
+                builder.setMessage("Bạn có muốn Bỏ sản phẩm " + product.getProduct_id().getId());
                 builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -92,22 +93,22 @@ public class ProductApdater extends ArrayAdapter<InvoiceDetail>  {
                 dialog.show();
                 return false;
 
-        }
+            }
         });
 
         tvId.setText(product.getProduct_id().getId());
         tvName.setText(product.getProduct_id().getName());
-        tvPrice.setText(product.getProduct_id().getPrice()+"đ");
-        tvCount.setText(1+"");
+        tvPrice.setText(product.getProduct_id().getPrice() + "đ");
+        tvCount.setText(1 + "");
         int num = Integer.parseInt(tvCount.getText().toString());
         product.setNumber(num);
         btnDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int count = Integer.parseInt(tvCount.getText().toString());
-                if (count>1){
+                if (count > 1) {
                     count--;
-                    tvCount.setText(count+"");
+                    tvCount.setText(count + "");
                     product.setNumber(count);
                 }
 
@@ -118,11 +119,18 @@ public class ProductApdater extends ArrayAdapter<InvoiceDetail>  {
             public void onClick(View view) {
                 int count = Integer.parseInt(tvCount.getText().toString());
                 count++;
-                tvCount.setText(count+"");
+                tvCount.setText(count + "");
                 product.setNumber(count);
             }
         });
         return convertView;
+    }
+
+    @Override
+    public void clear() {
+        mlList.clear();
+        notifyDataSetChanged();
+
     }
 
     @Override

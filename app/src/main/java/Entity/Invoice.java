@@ -90,5 +90,7 @@ public class Invoice {
         result+="]";
         return result;
     }
-
+    public void clearall(){
+        listProduct.clear();
+    }
 }
