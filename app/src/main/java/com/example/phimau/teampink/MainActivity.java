@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
                                                 etNumphone.setText(jsonResult.getString("phonenumber"));
                                                 etAdress.setText(jsonResult.getString("address"));
                                                 etName.setText(jsonResult.getString("name"));
+                                                etAdress.setEnabled(false);
+                                                etName.setEnabled(false);
                                             } else if (res == 0) {
                                                 isCustomer = 0;
                                             }
@@ -224,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
                     .setCallback(new FutureCallback<String>() {
                         @Override
                         public void onCompleted(Exception e, String result) {
-
                             loadDialog.dismiss();
                             clearfield();
                         }
