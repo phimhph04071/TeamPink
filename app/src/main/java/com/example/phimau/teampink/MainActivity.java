@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
                                                 etNumphone.setText(jsonResult.getString("phonenumber"));
                                                 etAdress.setText(jsonResult.getString("address"));
                                                 etName.setText(jsonResult.getString("name"));
-                                                etAdress.setEnabled(false);
-                                                etName.setEnabled(false);
+
+
                                             } else if (res == 0) {
                                                 isCustomer = 0;
                                             }
