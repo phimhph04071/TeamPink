@@ -11,7 +11,7 @@
 
         <TextView
             android:id="@+id/tvIdPro"
-            android:layout_width="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/tvNamePro"
             android:layout_width="100dp"
-            android:padding="8dp"
+            android:padding="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Android Jelly Bsédsdsdsssdssdsdsdsssdsđeađâsdasdasdasdasdsn" />
@@ -34,8 +34,9 @@
             android:text="120233ss2" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
             android:layout_weight="0.5">
 
             <LinearLayout
